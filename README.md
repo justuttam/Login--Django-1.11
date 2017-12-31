@@ -12,4 +12,4 @@ For setting up sendgrid for emails:
 1. Create a sendgrid account and generate a SENDGRID_API_KEY
 2. Replace SENDGRID_API_KEY value with your SENDGRID_API_KEY value in settings.py
 
-If you want to use file based email, then uncomment line number 131 and 132 and comment last three lines in settings.py
+If you want to use file based email, then uncomment line number 131 and 132, create a folder 'sent_emails' in project folder (at the level of accounts folder) and comment last three lines in settings.py
