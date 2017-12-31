@@ -1,0 +1,44 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block loginmessage %}
+    {% if user.is_authenticated %}
+        <strong>Hi {{ user.username }}!</strong>
+    {% else %}
+        <strong>Hello Guest !</strong>
+    {% endif %}
+{% endblock %}
+
+{% block loginoption %}
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span> Sign Out</a></li>
+        <li><a href="{% url 'password_change' %}"><span class="glyphicon"></span> Change Password</a></li>
+    {% else %}
+        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Welcome</h1>
+                <p>You are on your Dashboard</p>
+
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <div class="row">
+                <div class="jumbotron">
+                    <h1>Welcome</h1>
+                    <p>Please login to view content.</p>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

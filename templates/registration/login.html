@@ -1,0 +1,41 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block loginoption %}
+    <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a href="{% url 'password_reset' %}"><span class="glyphicon"></span> Forgot Password</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header"><h2>Login</h2></div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            {{form.username.label_tag}}
+                            {{form.username}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.password.label_tag}}
+                            {{form.password}}
+                        </div>
+                        {% if form.non_field_errors %}
+                            <ul>
+                                {% for error in form.non_field_errors %}
+                                    <li class="warning">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
